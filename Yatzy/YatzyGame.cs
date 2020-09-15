@@ -12,101 +12,101 @@ namespace Yatzy
 
         }
 
-        public int CalculateScore(int[] diceRoll, string category)
+        public int CalculateScoreGivenCategory(int[] diceRoll, string category)
         {
             switch (category)
             {
-                
                 case "chance":
                     return SumDiceRoll(diceRoll);
                 case "yatzy":
-                    int score = 50;
-                    var sameNumber = diceRoll[0];
-                    foreach(int die in diceRoll)
-                    {
-                        if(die != sameNumber) score = 0;
-                    }
-                    return score;
+                    return isYatzy(diceRoll) ? 50 : 0;
                 case "ones":
-                    return SumBasedOnNumber(1, diceRoll);
+                    return SumTheDieNumber(1, diceRoll);
                 case "twos":
-                    return SumBasedOnNumber(2, diceRoll);
+                    return SumTheDieNumber(2, diceRoll);
                 case "threes":
-                    return SumBasedOnNumber(3, diceRoll);
+                    return SumTheDieNumber(3, diceRoll);
                 case "fours":
-                    return SumBasedOnNumber(4, diceRoll);
+                    return SumTheDieNumber(4, diceRoll);
                 case "fives":
-                    return SumBasedOnNumber(5, diceRoll);
+                    return SumTheDieNumber(5, diceRoll);
                 case "sixes":
-                    return SumBasedOnNumber(6, diceRoll);
+                    return SumTheDieNumber(6, diceRoll);
                 case "pair":
-                    return FindHighestMatchingDiceForGivenFrequency(diceRoll, 2) * 2;
+                    var frequency = 2;
+                    return SumDieNumberGivenFrequency(diceRoll, frequency);
                 case "two pairs":
-                    var twoPairs = FindTwoHighestMatchingDicePair
-                    (diceRoll);
-                    if (twoPairs.Count == 2)
-                    {
-                        return (twoPairs[0] + twoPairs[1]) * 2;
-                    }
-                    return 0;
+                    return SumOfTwoHighestPairs(diceRoll);
                 case "three of a kind":
-                    return FindHighestMatchingDiceForGivenFrequency(diceRoll, 3) * 3;
+                    frequency = 3;
+                    return SumDieNumberGivenFrequency(diceRoll, frequency);
                 case "four of a kind":
-                    return FindHighestMatchingDiceForGivenFrequency(diceRoll, 4) * 4;
+                    frequency = 4;
+                    return SumDieNumberGivenFrequency(diceRoll, frequency);
                 case "small straight":
-                    if (isSmallStraight(diceRoll)) return 15;
-                    return 0;
+                    return isSmallStraight(diceRoll) ? 15 : 0;
                 case "large straight":
-                    if (isLargeStraight(diceRoll)) return 20;
-                    return 0;
+                    return isLargeStraight(diceRoll) ? 20 : 0;
                 case "full house":
-                    if(isFullHouse(diceRoll))
-                    {
-                        return SumDiceRoll(diceRoll);
-                    }
-                    return 0;
+                    return isFullHouse(diceRoll) ? SumDiceRoll(diceRoll) : 0;
                 default:
                     return 0;
             }
         }
 
-        public bool isFullHouse(int[] diceRoll)
+        private int SumOfTwoHighestPairs(int[] diceRoll)
+        {
+            var twoPairs = CreateListOfTwoHighestMatchingDicePair(diceRoll);
+            return (twoPairs.Count == 2) ? (twoPairs[0] + twoPairs[1]) * 2 : 0;
+        }
+
+        private bool isYatzy(int[] diceRoll)
+        {
+            var sameNumber = diceRoll[0];
+            foreach(int die in diceRoll)
+            {
+                if(die != sameNumber) return false;
+            }
+            return true;
+        }
+
+        private bool isFullHouse(int[] diceRoll)
         {
             var diceRollDictionary = ConvertToDictionary(diceRoll);
             var conditionForFullHouse = diceRollDictionary.Keys.Count == 2 && diceRollDictionary.Values.Min() > 1;
             return (conditionForFullHouse) ? true : false;
         }
 
-        public Dictionary<int,int> ConvertToDictionary(int[] diceRoll)
+        private Dictionary<int,int> ConvertToDictionary(int[] diceRoll)
         {
-            var dictionary = new Dictionary<int,int>();
+            var diceRollDictionary = new Dictionary<int,int>();
             foreach(int die in diceRoll)
             {
-                if(dictionary.ContainsKey(die))
+                if(diceRollDictionary.ContainsKey(die))
                 {
-                    dictionary[die] = dictionary[die] + 1;
+                    diceRollDictionary[die] = diceRollDictionary[die] + 1;
                 }
                 else
                 {
-                    dictionary.Add(die, 1);
+                    diceRollDictionary.Add(die, 1);
                 }
             }
-            return dictionary;
+            return diceRollDictionary;
         }
 
-        public bool isSmallStraight(int[] diceRoll)
+        private bool isSmallStraight(int[] diceRoll)
         {
             int[] smallStraight = new int[5] {1,2,3,4,5};
             return diceRoll.SequenceEqual(smallStraight);
         }
 
-        public bool isLargeStraight(int[] diceRoll)
+        private bool isLargeStraight(int[] diceRoll)
         {
             int[] largeStraight = new int[5] {2,3,4,5,6};
             return diceRoll.SequenceEqual(largeStraight);
         }
 
-        public int SumDiceRoll(int[] diceRoll)
+        private int SumDiceRoll(int[] diceRoll)
         {
             int score = 0;
             foreach(int die in diceRoll)
@@ -115,7 +115,7 @@ namespace Yatzy
             }
             return score;
         }
-        public int SumBasedOnNumber(int number, int[] diceRoll)
+        private int SumTheDieNumber(int number, int[] diceRoll)
         {
             var score = 0;
             foreach(int die in diceRoll)
@@ -125,20 +125,23 @@ namespace Yatzy
             return score;
         }
 
-        public int FindHighestMatchingDiceForGivenFrequency(int[] diceRoll, int numberOfTimes)
+        private int SumDieNumberGivenFrequency(int[] diceRoll, int frequency)
+        {
+            var dieNumber = FindHighestMatchingDiceGivenFrequency(diceRoll, frequency);
+            return dieNumber * frequency;
+        }
+
+        private int FindHighestMatchingDiceGivenFrequency(int[] diceRoll, int numberOfTimes)
         {
             for(int diceNumber = 6; diceNumber > 0; diceNumber--)
             {
                 var occurrence = Array.FindAll(diceRoll, die => die == diceNumber).Length;
-                if (occurrence >= numberOfTimes)
-                {
-                    return diceNumber;
-                }
+                if (occurrence >= numberOfTimes) return diceNumber;
             }
             return 0;
         }
 
-        public List<int> FindTwoHighestMatchingDicePair(int[] diceRoll)
+        private List<int> CreateListOfTwoHighestMatchingDicePair(int[] diceRoll)
         {
             List<int> twoHighestNumbersWithPair = new List<int>();
             for(int diceNumber = 6; diceNumber > 0; diceNumber--)

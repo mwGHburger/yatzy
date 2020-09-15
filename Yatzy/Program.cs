@@ -8,7 +8,6 @@ namespace Yatzy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Yatzy!");
             var diceRoll1 = new int[] {1,2,2,2,2};
             var dictionary = new Dictionary<int,int>();
             foreach(int die in diceRoll1)
