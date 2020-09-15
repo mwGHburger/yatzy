@@ -130,5 +130,74 @@ namespace Yatzy.Tests
             Assert.Equal(expectedScore2, actualScore2);
             Assert.Equal(expectedScore3, actualScore3);
         }
+
+        [Fact]
+        public void ReturnScoreForFourOfAKind()
+        {
+            var yatzy = new YatzyGame();
+            var category = "four of a kind";
+            var diceRoll1 = new int[5] {2,2,2,2,5};
+            var expectedScore1 = 8;
+
+            var actualScore1 = yatzy.CalculateScore(diceRoll1, category);
+
+            Assert.Equal(expectedScore1, actualScore1);
+        }
+
+        [Fact]
+        public void ReturnScoreForSmallStraight()
+        {
+            var yatzy = new YatzyGame();
+            var category = "small straight";
+            var diceRoll1 = new int[5] {1,2,3,4,5};
+            var diceRoll2 = new int[5] {2,3,4,5,6};
+            var expectedScore1 = 15;
+            var expectedScore2 = 0;
+
+            var actualScore1 = yatzy.CalculateScore(diceRoll1, category);
+            var actualScore2 = yatzy.CalculateScore(diceRoll2, category);
+
+            Assert.Equal(expectedScore1, actualScore1);
+            Assert.Equal(expectedScore2, actualScore2);
+        }
+
+        [Fact]
+        public void ReturnScoreForLargeStraight()
+        {
+            var yatzy = new YatzyGame();
+            var category = "large straight";
+            var diceRoll1 = new int[5] {1,2,3,4,5};
+            var diceRoll2 = new int[5] {2,3,4,5,6};
+            var expectedScore1 = 0;
+            var expectedScore2 = 20;
+
+            var actualScore1 = yatzy.CalculateScore(diceRoll1, category);
+            var actualScore2 = yatzy.CalculateScore(diceRoll2, category);
+
+            Assert.Equal(expectedScore1, actualScore1);
+            Assert.Equal(expectedScore2, actualScore2);
+        }
+
+        [Fact]
+        public void ReturnScoreForFullHouse()
+        {
+            var yatzy = new YatzyGame();
+            var category = "full house";
+            var diceRoll1 = new int[5] {1,1,2,2,2};
+            var diceRoll2 = new int[5] {2,2,3,3,4};
+            var diceRoll3 = new int[5] {4,4,4,4,4};
+            var expectedScore1 = 8;
+            var expectedScore2 = 0;
+            var expectedScore3 = 0;
+
+            var actualScore1 = yatzy.CalculateScore(diceRoll1, category);
+            var actualScore2 = yatzy.CalculateScore(diceRoll2, category);
+            var actualScore3 = yatzy.CalculateScore(diceRoll3, category);
+
+            Assert.Equal(expectedScore1, actualScore1);
+            Assert.Equal(expectedScore2, actualScore2);
+            Assert.Equal(expectedScore3, actualScore3);
+        }
     }
+    
 }
