@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nPf/yKwV5yCDq6igJwNtcoZ9tU+SEBBlRMtdRtSF0HtaqIp+3U4bU+H8D3iorJYFo7pjvZjOvqCBUcjGRECb8A==",
+  "dgSpecHash": "1ypMiOqLB7tRqtYEpg8N3q8F/Jp4w68FUIxPS6anWUetrznyZB2FEbQIIcAZcx15kK9z25YqceNH+qL0WzwbQQ==",
   "success": true,
-  "projectFilePath": "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy/Yatzy.Tests/Yatzy.Tests.csproj",
+  "projectFilePath": "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy_1/Yatzy.Tests/Yatzy.Tests.csproj",
   "expectedPackageFiles": [
     "/Users/Michael.Wang/.nuget/packages/coverlet.collector/1.2.0/coverlet.collector.1.2.0.nupkg.sha512",
     "/Users/Michael.Wang/.nuget/packages/microsoft.codecoverage/16.5.0/microsoft.codecoverage.16.5.0.nupkg.sha512",
