@@ -3,7 +3,7 @@ using Xunit;
 
 namespace Yatzy.Tests
 {
-    public class DiceScoreShould
+    public class DiceRollShould
     {
         
         [Fact]
