@@ -144,14 +144,8 @@ namespace Yatzy
             for(int diceNumber = 6; diceNumber > 0; diceNumber--)
             {
                 var frequency = Array.FindAll(diceRoll, die => die == diceNumber).Length;
-                if (frequency > 1)
-                {
-                    twoHighestNumbersWithPair.Add(diceNumber);
-                }
-                if (twoHighestNumbersWithPair.Count == 2)
-                {
-                    return twoHighestNumbersWithPair;
-                }
+                if (frequency > 1) twoHighestNumbersWithPair.Add(diceNumber);
+                if (twoHighestNumbersWithPair.Count == 2) return twoHighestNumbersWithPair;
             }
             return twoHighestNumbersWithPair;
         }
