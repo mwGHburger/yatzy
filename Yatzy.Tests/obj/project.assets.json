@@ -3526,11 +3526,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy_1/Yatzy.Tests/Yatzy.Tests.csproj",
+      "projectUniqueName": "/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/yatzy_1/Yatzy.Tests/Yatzy.Tests.csproj",
       "projectName": "Yatzy.Tests",
-      "projectPath": "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy_1/Yatzy.Tests/Yatzy.Tests.csproj",
+      "projectPath": "/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/yatzy_1/Yatzy.Tests/Yatzy.Tests.csproj",
       "packagesPath": "/Users/Michael.Wang/.nuget/packages/",
-      "outputPath": "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy_1/Yatzy.Tests/obj/",
+      "outputPath": "/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/yatzy_1/Yatzy.Tests/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/Michael.Wang/.nuget/NuGet/NuGet.Config"
@@ -3544,8 +3544,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy_1/Yatzy/Yatzy.csproj": {
-              "projectPath": "/Users/Michael.Wang/Desktop/MYOB/Reference Kata/Language Design/yatzy_1/Yatzy/Yatzy.csproj"
+            "/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/yatzy_1/Yatzy/Yatzy.csproj": {
+              "projectPath": "/Users/Michael.Wang/Desktop/MYOB/MYOB Katas/Language Design/yatzy_1/Yatzy/Yatzy.csproj"
             }
           }
         }
