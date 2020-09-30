@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.Linq;
+using System;
+using System.Collections.Generic;
 
 namespace Yatzy
 {
@@ -6,7 +8,7 @@ namespace Yatzy
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello Yatzy!");
+            System.Console.WriteLine("Hello Yatzy!");
         }
     }
 }
